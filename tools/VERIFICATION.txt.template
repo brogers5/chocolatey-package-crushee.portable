@@ -1,23 +1,23 @@
-VERIFICATION
+﻿VERIFICATION
 Verification is intended to assist the Chocolatey moderators and community
 in verifying that this package's contents are trustworthy.
 
 The packaged Windows portable archive is available for independent download via the
 Releases page on Crushee's GitHub repository. A download link for the packaged version
 is included at the following URL:
-https://github.com/xanderfrangos/crushee/releases/tag/v2.4.5
+%tagReleaseUrl%
 
 For convenience, this is a direct URL to the relevant asset:
-https://github.com/xanderfrangos/crushee/releases/download/v2.4.5/Crushee-v2.4.5-win-portable.zip
+%binaryUrl%
 
-The following PowerShell command will print a calculated SHA256 hash:
+The following PowerShell command will print a calculated %checksumType% hash:
 
-    (Get-FileHash -Path Crushee-v2.4.5-win-portable.zip -Algorithm SHA256).Hash
+    (Get-FileHash -Path %binaryFileName% -Algorithm %checksumType%).Hash
 
 This command should be executed against an independently downloaded archive, as well
 as the copy distributed with the package. Both hash values should be identical. A
 matching hash value should confirm that no corruption or tampering has occurred
 during this package's generation process.
 
-For reference, the following SHA256 hash was calculated during the package's automated creation:
-FB3DFDA738BC5096F1F695F7E2197127DEC858057FCE7B7AD571D1EAF31D0B22
+For reference, the following %checksumType% hash was calculated during the package's automated creation:
+%checksumValue%

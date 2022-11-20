@@ -1,81 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Read this before creating packages: https://docs.chocolatey.org/en-us/create/create-packages -->
-<!-- It is especially important to read the above link to understand additional requirements when publishing packages to the community feed aka dot org (https://community.chocolatey.org/packages). -->
-
-<!-- Test your packages in a test environment: https://github.com/chocolatey/chocolatey-test-environment -->
-
-<!--
-This is a nuspec. It mostly adheres to https://docs.nuget.org/create/Nuspec-Reference. Chocolatey uses a special version of NuGet.Core that allows us to do more than was initially possible. As such there are certain things to be aware of:
-
-* the package xmlns schema url may cause issues with nuget.exe
-* Any of the following elements can ONLY be used by choco tools - projectSourceUrl, docsUrl, mailingListUrl, bugTrackerUrl, packageSourceUrl, provides, conflicts, replaces
-* nuget.exe can still install packages with those elements but they are ignored. Any authoring tools or commands will error on those elements
--->
-
-<!-- You can embed software files directly into packages, as long as you are not bound by distribution rights. -->
-<!-- * If you are an organization making private packages, you probably have no issues here -->
-<!-- * If you are releasing to the community feed, you need to consider distribution rights. -->
 <!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <!-- == PACKAGE SPECIFIC SECTION == -->
-    <!-- This section is about this package, although id and version have ties back to the software -->
-    <!-- id is lowercase and if you want a good separator for words, use '-', not '.'. Dots are only acceptable as suffixes for certain types of packages, e.g. .install, .portable, .extension, .template -->
-    <!-- If the software is cross-platform, attempt to use the same id as the debian/rpm package(s) if possible. -->
     <id>crushee.portable</id>
-    <!-- version should MATCH as closely as possible with the underlying software -->
-    <!-- Is the version a prerelease of a version? https://docs.nuget.org/create/versioning#creating-prerelease-packages -->
-    <!-- Note that unstable versions like 0.0.1 can be considered a released version, but it's possible that one can release a 0.0.1-beta before you release a 0.0.1 version. If the version number is final, that is considered a released version and not a prerelease. -->
-    <version>__REPLACE__</version>
-    <!-- <packageSourceUrl>Where is this Chocolatey package located (think GitHub)? packageSourceUrl is highly recommended for the community feed</packageSourceUrl>-->
-    <!-- owners is a poor name for maintainers of the package. It sticks around by this name for compatibility reasons. It basically means you. -->
-    <!--<owners>__REPLACE_YOUR_NAME__</owners>-->
-    <!-- ============================== -->
+    <version>2.4.5</version>
+    <packageSourceUrl>https://github.com/brogers5/chocolatey-package-crushee.portable/tree/v2.4.5</packageSourceUrl>
+    <owners>sublym0nal</owners>
+    <title>Crushee (Portable)</title>
+    <authors>Xander Frangos</authors>
+    <projectUrl>https://crushee.app/</projectUrl>
+    <iconUrl>https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-crushee.portable@7ac62b45f3ff28d01ab6bf6921c48f86a86c289b/crushee.portable.png</iconUrl>
+    <copyright>Copyright © 2022 Xander Frangos</copyright>
+    <licenseUrl>https://github.com/xanderfrangos/crushee/blob/v2.4.5/LICENSE</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <projectSourceUrl>https://github.com/xanderfrangos/crushee/tree/v2.4.5</projectSourceUrl>
+    <bugTrackerUrl>https://github.com/xanderfrangos/crushee/issues</bugTrackerUrl>
+    <tags>crushee jpeg jpg png gif svg webp avif heic image conversion resize resizing crop cropping compress compression batch optimization quality chroma subsampling chroma-subsampling electron nodejs 64-bit portable embedded cross-platform foss</tags>
+    <summary>Precisely compress, resize, and convert images.</summary>
+    <description><![CDATA[
+---
 
-    <!-- == SOFTWARE SPECIFIC SECTION == -->
-    <!-- This section is about the software itself -->
-    <title>crushee.portable (Install)</title>
-    <authors>__REPLACE_AUTHORS_OF_SOFTWARE_COMMA_SEPARATED__</authors>
-    <!-- projectUrl is required for the community feed -->
-    <projectUrl>https://_Software_Location_REMOVE_OR_FILL_OUT_</projectUrl>
-    <!-- There are a number of CDN Services that can be used for hosting the Icon for a package. More information can be found here: https://docs.chocolatey.org/en-us/create/create-packages#package-icon-guidelines -->
-    <!-- Here is an example using Githack -->
-    <!--<iconUrl>http://rawcdn.githack.com/__REPLACE_YOUR_REPO__/master/icons/crushee.portable.png</iconUrl>-->
-    <!-- <copyright>Year Software Vendor</copyright> -->
-    <!-- If there is a license Url available, it is required for the community feed -->
-    <!-- <licenseUrl>Software License Location __REMOVE_OR_FILL_OUT__</licenseUrl>
-    <requireLicenseAcceptance>true</requireLicenseAcceptance>-->
-    <!--<projectSourceUrl>Software Source Location - is the software FOSS somewhere? Link to it with this</projectSourceUrl>-->
-    <!--<docsUrl>At what url are the software docs located?</docsUrl>-->
-    <!--<mailingListUrl></mailingListUrl>-->
-    <!--<bugTrackerUrl></bugTrackerUrl>-->
-    <tags>crushee.portable SPACE_SEPARATED</tags>
-    <summary>__REPLACE__</summary>
-    <description>__REPLACE__MarkDown_Okay </description>
-    <!-- <releaseNotes>__REPLACE_OR_REMOVE__MarkDown_Okay</releaseNotes> -->
-    <!-- =============================== -->
+### [choco://crushee.portable](choco://crushee.portable)
 
-    <!-- Specifying dependencies and version ranges? https://docs.nuget.org/create/versioning#specifying-version-ranges-in-.nuspec-files -->
-    <!--<dependencies>
-      <dependency id="" version="__MINIMUM_VERSION__" />
-      <dependency id="" version="[__EXACT_VERSION__]" />
-      <dependency id="" version="[_MIN_VERSION_INCLUSIVE, MAX_VERSION_INCLUSIVE]" />
-      <dependency id="" version="[_MIN_VERSION_INCLUSIVE, MAX_VERSION_EXCLUSIVE)" />
-      <dependency id="" />
-      <dependency id="chocolatey-core.extension" version="1.1.0" />
-    </dependencies>-->
-    <!-- chocolatey-core.extension - https://community.chocolatey.org/packages/chocolatey-core.extension
-         - You want to use Get-UninstallRegistryKey on less than 0.9.10 (in chocolateyUninstall.ps1)
-         - You want to use Get-PackageParameters and on less than 0.11.0
-         - You want to take advantage of other functions in the core community maintainer's team extension package
-    -->
+To use choco:// protocol URLs, install [(unofficial) choco:// Protocol support](https://community.chocolatey.org/packages/choco-protocol-support)
 
-    <!--<provides>NOT YET IMPLEMENTED</provides>-->
-    <!--<conflicts>NOT YET IMPLEMENTED</conflicts>-->
-    <!--<replaces>NOT YET IMPLEMENTED</replaces>-->
+---
+
+## Crushee
+
+Crushee is an image compression tool, powered by Electron and Node.js. You can carefully tune your images locally to meet your needs, without having to re-upload to a web service, or restart an application every time.
+
+![Screenshot](https://cdn.jsdelivr.net/gh/brogers5/chocolatey-package-crushee.portable@7ac62b45f3ff28d01ab6bf6921c48f86a86c289b/Screenshot.png)
+
+### Features
+
+* Input several different image file formats (e.g. JPEG, PNG, GIF, SVG, WebP, AVIF, HEIC)
+* Optionally convert to select image file formats (e.g. JPEG, PNG, WebP, AVIF)
+* Resize images - define an exact size, or upscale/downscale while preserving the original aspect ratio
+* Batch processing - analyze, crush and save multiple images at once!
+* Quality Level sliders - experiment and find the perfect balance between picture quality and file size!
+* Advanced format-specific options, such as Chroma Subsampling Level and Color Count
+* Light/Dark Mode app theme
+
+## Package Parameters
+
+* `/NoShim` - Opt out of creating a GUI shim.
+* `/NoDesktopShortcut` - Opt out of creating a Desktop shortcut.
+* `/NoProgramsShortcut` - Opt out of creating a Programs shortcut in your Start Menu.
+* `/Start` - Automatically start Crushee after installation completes.
+
+## Package Notes
+
+This package may create a [shim](https://docs.chocolatey.org/en-us/features/shim) for `Crushee.exe`, as is typical for a portable application package. However, `shimgen` will create a GUI shim, which will not wait for the underlying process to exit by default. This may cause issues with displaying console output when viewing debug messages. Users requiring this functionality should pass the `--shimgen-waitforexit` switch to ensure the shim behaves correctly.
+
+---
+
+When using the `/Start` package parameter, you may see a large `CLIXML` block logged to `stderr`. This is [a known issue](https://github.com/chocolatey/choco/issues/1016) with Chocolatey's `Start-ChocolateyProcessAsAdmin` cmdlet, and is not necessarily indicative of an error condition. Until this is addressed, you should ensure the `failOnStandardError` feature is disabled while installing/upgrading this package.
+
+---
+
+For future upgrade operations, consider opting into Chocolatey's `useRememberedArgumentsForUpgrades` feature to avoid having to pass the same arguments with each upgrade:
+
+```shell
+choco feature enable --name=useRememberedArgumentsForUpgrades
+```
+]]></description>
+    <releaseNotes>https://github.com/xanderfrangos/crushee/releases/tag/v2.4.5</releaseNotes>
   </metadata>
   <files>
-    <!-- this section controls what actually gets packaged into the Chocolatey package -->
-    <file src="tools\**" target="tools" />
+    <file src="tools\chocolateybeforemodify.ps1" target="tools" />
+    <file src="tools\chocolateyinstall.ps1" target="tools" />
+    <file src="tools\chocolateyuninstall.ps1" target="tools" />
+    <file src="tools\Crushee-v*-win-portable.zip" target="tools" />
+    <file src="tools\LICENSE.txt" target="tools" />
+    <file src="tools\VERIFICATION.txt" target="tools" />
+    <file src="tools/resources/app/node_modules/advpng-bin/vendor/advpng.exe.ignore" target="tools/resources/app/node_modules/advpng-bin/vendor" />
+    <file src="tools/resources/app/node_modules/gifsicle/vendor/gifsicle.exe.ignore" target="tools/resources/app/node_modules/gifsicle/vendor" />
+    <file src="tools/resources/app/node_modules/jpeg-recompress-bin/vendor/jpeg-recompress.exe.ignore" target="tools/resources/app/node_modules/jpeg-recompress-bin/vendor" />
+    <file src="tools/resources/app/node_modules/jpegtran-bin/vendor/jpegtran.exe.ignore" target="tools/resources/app/node_modules/jpegtran-bin/vendor" />
+    <file src="tools/resources/app/node_modules/mozjpeg/vendor/cjpeg.exe.ignore" target="tools/resources/app/node_modules/mozjpeg/vendor" />
+    <file src="tools/resources/app/node_modules/pngquant-bin/vendor/pngquant.exe.ignore" target="tools/resources/app/node_modules/pngquant-bin/vendor" />
+    <file src="tools/resources/elevate.exe.ignore" target="tools/resources" />
   </files>
 </package>
