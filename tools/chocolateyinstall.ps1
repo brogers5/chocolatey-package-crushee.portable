@@ -1,7 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop'
 
 $toolsDir = "$(Split-Path -parent $MyInvocation.MyCommand.Definition)"
-$archiveFileName = 'Crushee-v2.4.5-win-portable.zip'
+$archiveFileName = 'Crushee-v2.4.6-win-portable.zip'
 $archiveFilePath = Join-Path -Path $toolsDir -ChildPath $archiveFileName 
 
 $packageArgs = @{
