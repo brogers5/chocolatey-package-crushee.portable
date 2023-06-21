@@ -16,8 +16,7 @@ Remove-Item -Path $archiveFilePath -Force -ErrorAction SilentlyContinue
 
 $binaryFileName = 'Crushee.exe'
 $pp = Get-PackageParameters
-if ($pp.NoShim)
-{
+if ($pp.NoShim) {
   #Create shim ignore file
   $ignoreFilePath = Join-Path -Path $toolsDir -ChildPath "$binaryFileName.ignore"
   Set-Content -Path $ignoreFilePath -Value $null -ErrorAction SilentlyContinue
@@ -25,22 +24,19 @@ if ($pp.NoShim)
 
 $linkName = 'Crushee (Portable).lnk'
 $targetPath = Join-Path -Path $toolsDir -ChildPath $binaryFileName
-if (!$pp.NoDesktopShortcut)
-{
+if (!$pp.NoDesktopShortcut) {
   $desktopDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::DesktopDirectory)
   $shortcutFilePath = Join-Path -Path $desktopDirectory -ChildPath $linkName
   Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -ErrorAction SilentlyContinue
 }
 
-if (!$pp.NoProgramsShortcut)
-{
+if (!$pp.NoProgramsShortcut) {
   $programsDirectory = [Environment]::GetFolderPath([Environment+SpecialFolder]::Programs)
   $shortcutFilePath = Join-Path -Path $programsDirectory -ChildPath $linkName
   Install-ChocolateyShortcut -ShortcutFilePath $shortcutFilePath -TargetPath $targetPath -ErrorAction SilentlyContinue
 }
 
-if ($pp.Start)
-{
+if ($pp.Start) {
   #Spawn a separate temporary PowerShell instance to prevent display of debug output
   $statement = "Start-Process -FilePath ""$targetPath"""
   Start-ChocolateyProcessAsAdmin -Statements $statement -NoSleep -ErrorAction SilentlyContinue
