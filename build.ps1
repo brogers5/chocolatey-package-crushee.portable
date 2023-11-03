@@ -9,7 +9,7 @@ $nuspecFileRelativePath = Join-Path -Path $currentPath -ChildPath 'crushee.porta
 $version = [Version] $nuspec.package.metadata.version
 
 $global:Latest = @{
-    Url64 = Get-SoftwareUri -Version $version
+    Url64   = Get-SoftwareUri -Version $version
     Version = $version
 }
 

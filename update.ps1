@@ -27,11 +27,11 @@ function global:au_AfterUpdate ($Package) {
 function global:au_SearchReplace {
     @{
         "$($Latest.PackageName).nuspec" = @{
-            "(<packageSourceUrl>)[^<]*(</packageSourceUrl>)" = "`$1https://github.com/brogers5/chocolatey-package-$($Latest.PackageName)/tree/v$($Latest.Version)`$2"
-            "(<licenseUrl>)[^<]*(</licenseUrl>)"             = "`$1https://github.com/$($owner)/$($repository)/blob/v$($Latest.SoftwareVersion)/LICENSE`$2"
-            "(<projectSourceUrl>)[^<]*(</projectSourceUrl>)" = "`$1https://github.com/$($owner)/$($repository)/tree/v$($Latest.SoftwareVersion)`$2"
-            "(<releaseNotes>)[^<]*(</releaseNotes>)"         = "`$1https://github.com/$($owner)/$($repository)/releases/tag/v$($Latest.SoftwareVersion)`$2"
-            "(<copyright>)[^<]*(</copyright>)"               = "`$1Copyright © $((Get-Date).Year) Xander Frangos`$2"
+            '(<packageSourceUrl>)[^<]*(</packageSourceUrl>)' = "`$1https://github.com/brogers5/chocolatey-package-$($Latest.PackageName)/tree/v$($Latest.Version)`$2"
+            '(<licenseUrl>)[^<]*(</licenseUrl>)'             = "`$1https://github.com/$($owner)/$($repository)/blob/v$($Latest.SoftwareVersion)/LICENSE`$2"
+            '(<projectSourceUrl>)[^<]*(</projectSourceUrl>)' = "`$1https://github.com/$($owner)/$($repository)/tree/v$($Latest.SoftwareVersion)`$2"
+            '(<releaseNotes>)[^<]*(</releaseNotes>)'         = "`$1https://github.com/$($owner)/$($repository)/releases/tag/v$($Latest.SoftwareVersion)`$2"
+            '(<copyright>)[^<]*(</copyright>)'               = "`$1Copyright © $((Get-Date).Year) Xander Frangos`$2"
         }
         'tools\VERIFICATION.txt'        = @{
             '%checksumValue%'  = "$($Latest.Checksum64)"
