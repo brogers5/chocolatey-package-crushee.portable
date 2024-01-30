@@ -1,12 +1,3 @@
-
----
-
-### [choco://crushee.portable](choco://crushee.portable)
-
-To use choco:// protocol URLs, install [(unofficial) choco:// Protocol support](https://community.chocolatey.org/packages/choco-protocol-support)
-
----
-
 ## Crushee
 
 Crushee is an image compression tool, powered by Electron and Node.js. You can carefully tune your images locally to meet your needs, without having to re-upload to a web service, or restart an application every time.
